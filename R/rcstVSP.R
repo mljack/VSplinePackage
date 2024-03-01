@@ -8,10 +8,16 @@
 rcstVSP <- function(data_frame,theta,xout=NULL){
   sub_t <- data_frame$t
   rowlen<- length(sub_t)
+  print(rowlen)
+  print(sub_t)
+  print("===============")
 
-  #tx   <- seq(sub_t[1],sub_t[rowlen],length = (rowlen*10))
-  if(is.null(xout)) tx <- data_frame$t
-  else tx <- xout
+  tx   <- seq(sub_t[1],sub_t[rowlen],length = (rowlen*4))
+
+  print(length(tx))
+
+  # if(is.null(xout)) tx <- data_frame$t
+  # else tx <- xout
   
   ft   <- numeric(length(tx))
   dft  <- numeric(length(tx))
@@ -39,5 +45,7 @@ rcstVSP <- function(data_frame,theta,xout=NULL){
     dft[k]   <- temp_dx
     d2ft[k]  <- temp_d2x
   }
+  print(tx)
+
   return(list(t = tx,y = ft,v = dft,av = d2ft))
 }
